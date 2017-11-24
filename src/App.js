@@ -67,7 +67,8 @@ class App extends Component {
         </button>
 
         {this.state.persons.map(person => (
-          <Person key={person.key} id={person.key} name={person.name} age={person.age}
+          <Person key={person.key}
+            id={person.key} name={person.name} age={person.age}
             click={() => this.switchNameHandler('Max!')}
             changed={this.nameChangedHandler}>
             {person.extra}
