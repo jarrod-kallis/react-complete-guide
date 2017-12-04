@@ -27,9 +27,9 @@ class App extends Component {
     showPersons: false
   };
 
-  switchNameHandler = () => {
+  switchNameHandler = name => {
     const persons = this.state.persons;
-    persons[0] = { ...persons[0], name: 'Jarrod' };
+    persons[0] = { ...persons[0], name };
 
     this.setState({ persons });
   };
@@ -93,7 +93,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi from React</h1>
-        <button style={style} onClick={() => this.switchNameHandler()}>
+        <button style={style} onClick={() => this.switchNameHandler('Jarrod')}>
           Switch Name
         </button>
         <button style={style} onClick={() => this.showPersonsHandler()}>
