@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import Radium from 'radium';
 
 import './Person.css';
 
 const Person = props => (
+  // const style = {
+  //   '@media (min-width: 500px)': {
+  //     width: '350px'
+  //   }
+  // };
+
+  // <div className="Person" style={style}>
   <div className="Person">
     <p>
       I am {props.name} and I am {props.age}!
@@ -26,4 +34,5 @@ Person.propTypes = {
   change: PropTypes.func.isRequired
 };
 
+// export default Radium(Person);
 export default Person;

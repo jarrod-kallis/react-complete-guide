@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import Radium, { StyleRoot } from 'radium';
 
 import './App.css';
 
@@ -82,21 +83,46 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: this.state.showPersons ? 'green' : 'red',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      marginRight: '5px'
+      marginRight:
+        '5px' /* ,
+      ':hover': {
+        backgroundColor: this.state.showPersons ? 'lightgreen' : 'salmon',
+        color: 'black'
+      }*/
     };
 
+    // const classes = ['red', 'bold'].join(' '); // 'red bold'
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
     return (
+      // <StyleRoot>
       <div className="App">
         <h1>Hi from React</h1>
-        <button style={style} onClick={() => this.switchNameHandler('Jarrod')}>
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button
+          key="btnSwitchName"
+          style={style}
+          onClick={() => this.switchNameHandler('Jarrod')}
+        >
           Switch Name
         </button>
-        <button style={style} onClick={() => this.showPersonsHandler()}>
+        <button
+          key="btnShowPerson"
+          style={style}
+          onClick={() => this.showPersonsHandler()}
+        >
           {this.state.showPersons ? 'Hide Persons' : 'Show Persons'}
         </button>
         {this.state.showPersons
@@ -113,8 +139,10 @@ class App extends Component {
             ))
           : null}
       </div>
+      // </StyleRoot>
     );
   }
 }
 
+// export default Radium(App);
 export default App;
