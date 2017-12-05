@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 
 import cssClasses from './Person.css';
 
+if (Math.random() > 0.99999999) {
+  throw new Error('Something went wrong!');
+}
+
 const Person = props => (
   // const style = {
   //   '@media (min-width: 500px)': {

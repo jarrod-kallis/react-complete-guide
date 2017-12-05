@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import cssClasses from './App.css';
 
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -125,15 +126,16 @@ class App extends Component {
         </button>
         {this.state.showPersons
           ? this.state.persons.map((person, index) => (
-              <Person
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                deleteClick={() => this.deletePersonHandler(index)}
-                change={event => this.nameChangeHandler(event, person.id)}
-              >
-                {person.extra}
-              </Person>
+              <ErrorBoundary key={person.id}>
+                <Person
+                  name={person.name}
+                  age={person.age}
+                  deleteClick={() => this.deletePersonHandler(index)}
+                  change={event => this.nameChangeHandler(event, person.id)}
+                >
+                  {person.extra}
+                </Person>
+              </ErrorBoundary>
             ))
           : null}
       </div>
