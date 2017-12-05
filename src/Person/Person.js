@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import Radium from 'radium';
 
-import './Person.css';
+import cssClasses from './Person.css';
 
 const Person = props => (
   // const style = {
@@ -12,7 +12,8 @@ const Person = props => (
   // };
 
   // <div className="Person" style={style}>
-  <div className="Person">
+  // <div className="Person">
+  <div className={cssClasses.Person}>
     <p>
       I am {props.name} and I am {props.age}!
     </p>

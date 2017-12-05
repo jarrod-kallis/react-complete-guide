@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import Radium, { StyleRoot } from 'radium';
 
-import './App.css';
+import cssClasses from './App.css';
 
 import Person from './Person/Person';
 
@@ -82,47 +82,45 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: this.state.showPersons ? 'green' : 'red',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      marginRight:
-        '5px' /* ,
-      ':hover': {
-        backgroundColor: this.state.showPersons ? 'lightgreen' : 'salmon',
-        color: 'black'
-      }*/
-    };
+    // Removed so we can style using CSS Modules
+    // const buttonStyle = {
+    //   backgroundColor: this.state.showPersons ? 'green' : 'red',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   marginRight:
+    //     '5px' /* ,
+    //   ':hover': {
+    //     backgroundColor: this.state.showPersons ? 'lightgreen' : 'salmon',
+    //     color: 'black'
+    //   }*/
+    // };
 
     // const classes = ['red', 'bold'].join(' '); // 'red bold'
     const classes = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      // classes.push('red');
+      classes.push(cssClasses.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold');
+      // classes.push('bold');
+      classes.push(cssClasses.bold);
     }
+
+    const btnClass = this.state.showPersons ? cssClasses.Red : '';
 
     return (
       // <StyleRoot>
-      <div className="App">
+      // <div className="App">
+      <div className={cssClasses.App}>
         <h1>Hi from React</h1>
         <p className={classes.join(' ')}>This is really working!</p>
-        <button
-          key="btnSwitchName"
-          style={style}
-          onClick={() => this.switchNameHandler('Jarrod')}
-        >
+        <button onClick={() => this.switchNameHandler('Jarrod')}>
           Switch Name
         </button>
-        <button
-          key="btnShowPerson"
-          style={style}
-          onClick={() => this.showPersonsHandler()}
-        >
+        <button className={btnClass} onClick={() => this.showPersonsHandler()}>
           {this.state.showPersons ? 'Hide Persons' : 'Show Persons'}
         </button>
         {this.state.showPersons
