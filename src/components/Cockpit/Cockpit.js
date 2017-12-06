@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import cssClasses from './Cockpit.css';
+import Auxillary from '../../hoc/Auxillary';
 
 const Cockpit = props => {
   // const classes = ['red', 'bold'].join(' '); // 'red bold'
@@ -15,19 +16,24 @@ const Cockpit = props => {
     classes.push(cssClasses.bold);
   }
 
-  const btnClass = props.showPersons ? cssClasses.Red : '';
+  const btnClass = `${cssClasses.Button} ${
+    props.showPersons ? cssClasses.Red : ''
+  }`;
 
   return (
-    <div className={cssClasses.Cockpit}>
+    <Auxillary>
       <h1>{props.title}</h1>
       <p className={classes.join(' ')}>This is really working!</p>
-      <button onClick={() => props.switchNameClick('Jarrod')}>
+      <button
+        className={cssClasses.Button}
+        onClick={() => props.switchNameClick('Jarrod')}
+      >
         Switch Name
       </button>
       <button className={btnClass} onClick={props.showPersonsClick}>
         {props.showPersons ? 'Hide Persons' : 'Show Persons'}
       </button>
-    </div>
+    </Auxillary>
   );
 };
 

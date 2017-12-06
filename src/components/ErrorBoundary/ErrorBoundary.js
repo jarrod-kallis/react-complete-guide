@@ -10,13 +10,13 @@ class ErrorBoundary extends React.Component {
   componentDidCatch = (error, info) => {
     this.setState({
       hasError: true,
-      errorMessage: `${error} ${info}`
+      errorMessage: `${error} ${info.componentStack}`
     });
   };
 
   render() {
     if (this.state.hasError) {
-      return <h1>Something went wrong! {this.state.errorMessage}</h1>;
+      return <h4>Something went wrong! {this.state.errorMessage}</h4>;
     }
 
     return this.props.children;
