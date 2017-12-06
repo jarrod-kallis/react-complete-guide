@@ -5,6 +5,7 @@ import cssClasses from './App.css';
 
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import WithClass from '../hoc/WithClassComponent';
 
 class App extends PureComponent {
   constructor(props) {
@@ -98,7 +99,8 @@ class App extends PureComponent {
     console.log('[App.js] render');
 
     return (
-      <div className={cssClasses.App}>
+      // <div className={cssClasses.App}>
+      <WithClass classes={cssClasses.App}>
         {/* <button onClick={() => this.setState({ showPersons: true })}>
           Show Persons
         </button> */}
@@ -116,7 +118,7 @@ class App extends PureComponent {
             change={this.nameChangeHandler}
           />
         ) : null}
-      </div>
+      </WithClass>
     );
   }
 }

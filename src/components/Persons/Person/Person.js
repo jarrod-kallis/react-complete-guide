@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import cssClasses from './Person.css';
 
+import Auxillary from '../../../hoc/Auxillary';
+import withClass from '../../../hoc/withClassFunction';
+
 class Person extends React.Component {
   constructor(props) {
     super(props);
@@ -30,14 +33,14 @@ class Person extends React.Component {
     }
 
     return (
-      <div className={cssClasses.Person}>
+      <Auxillary>
         <p>
           I am {this.props.name} and I am {this.props.age}!
         </p>
         <input onChange={this.props.change} value={this.props.name} />
         <p>{this.props.children}</p>
         <button onClick={this.props.deleteClick}>Delete Person</button>
-      </div>
+      </Auxillary>
     );
     // return [
     //   <p key={1} className={cssClasses.Person}>
@@ -65,4 +68,4 @@ Person.propTypes = {
 };
 
 // export default Radium(Person);
-export default Person;
+export default withClass(Person, cssClasses.Person);
