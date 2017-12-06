@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import cssClasses from './App.css';
 
@@ -71,6 +72,7 @@ class App extends Component {
     return (
       <div className={cssClasses.App}>
         <Cockpit
+          title={this.props.title}
           personsLength={this.state.persons.length}
           switchNameClick={this.switchNameHandler}
           showPersonsClick={this.showPersonsHandler}
@@ -87,5 +89,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  title: PropTypes.string.isRequired
+};
 
 export default App;

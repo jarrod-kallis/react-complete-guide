@@ -19,7 +19,7 @@ const Cockpit = props => {
 
   return (
     <div className={cssClasses.Cockpit}>
-      <h1>Hi from React</h1>
+      <h1>{props.title}</h1>
       <p className={classes.join(' ')}>This is really working!</p>
       <button onClick={() => props.switchNameClick('Jarrod')}>
         Switch Name
@@ -32,6 +32,7 @@ const Cockpit = props => {
 };
 
 Cockpit.propTypes = {
+  title: PropTypes.string.isRequired,
   personsLength: PropTypes.number.isRequired,
   showPersons: PropTypes.bool.isRequired,
   switchNameClick: PropTypes.func.isRequired,
