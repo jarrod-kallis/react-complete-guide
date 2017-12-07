@@ -17,7 +17,8 @@ class App extends PureComponent {
         { id: 2, name: 'Manu', age: 29, extra: 'My Hobbies: Racing' },
         { id: 3, name: 'Stephanie', age: 26 }
       ],
-      showPersons: false
+      showPersons: false,
+      clickCounter: 0
     };
 
     console.log('[App.js] constructor', props);
@@ -64,7 +65,10 @@ class App extends PureComponent {
   };
 
   showPersonsHandler = () => {
-    this.setState({ showPersons: !this.state.showPersons });
+    this.setState((prevState/* , prevProps*/) => ({
+      showPersons: !prevState.showPersons,
+      clickCounter: prevState.clickCounter + 1
+    }));
   };
 
   deletePersonHandler = index => {
@@ -104,6 +108,13 @@ class App extends PureComponent {
         {/* <button onClick={() => this.setState({ showPersons: true })}>
           Show Persons
         </button> */}
+        <div style={{ display: 'inline-block', color: 'black' }}>
+          <p style={{ display: 'inherit', color: 'red', fontWeight: 'bold' }}>
+            Show Persons Click Counter:
+          </p>
+          {''} {this.state.clickCounter}
+        </div>
+
         <Cockpit
           title={this.props.title}
           personsLength={this.state.persons.length}
